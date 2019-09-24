@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="criptografia.rsa.MainController">
+  <children>
+    <Button fx:id="butonGerarCoprimos" layoutX="36.0" layoutY="147.0" mnemonicParsing="false" onAction="#GerarCoPrimosAction" text="Gerar lista de co-primos" />
+    <Label layoutX="24.0" layoutY="85.0" text="Digite o primeiro número:" />
+    <Label layoutX="24.0" layoutY="115.0" text="Digite o segundo número:" />
+    <TextField fx:id="textFieldNum1" layoutX="201.0" layoutY="82.0" prefWidth="28.0" />
+    <TextField fx:id="textFieldNum2" layoutX="201.0" layoutY="115.0" prefHeight="23.0" prefWidth="28.0" />
+    <Label layoutX="222.0" layoutY="23.0" prefHeight="41.0" prefWidth="118.0" text="Criptografia RSA" />
+    <Label layoutX="340.0" layoutY="74.0" text="Lista de co-primos" />
+    <ComboBox fx:id="listaCoPrimos" layoutX="446.0" layoutY="101.0">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Item 1" />
+          <String fx:value="Item 2" />
+          <String fx:value="Item 3" />
+        </FXCollections>
+      </items>
+    </ComboBox>
+    <Label layoutX="300.0" layoutY="104.0" text="Escolha um numero: " />
+    <Label layoutX="300.0" layoutY="160.0" prefWidth="168.0" text="Escolha um valor para k" />
+    <Label layoutX="300.0" layoutY="142.0" prefWidth="89.0" text="Valores de e" />
+    <TextField layoutX="468.0" layoutY="154.0" prefWidth="57.0" />
+    <Button layoutX="534.0" layoutY="155.0" mnemonicParsing="false" text="Ok" />
+    <Label layoutX="36.0" layoutY="224.0" text="Chave Publica: " />
+    <Label layoutX="36.0" layoutY="250.0" text="Chave Privada: " />
+    <Label layoutX="139.0" layoutY="224.0" text="(d, n)" />
+    <Label layoutX="137.0" layoutY="250.0" text="(e, n)" />
+  </children>
+</AnchorPane>
