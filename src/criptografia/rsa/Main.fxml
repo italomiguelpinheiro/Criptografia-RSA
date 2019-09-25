@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.collections.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="criptografia.rsa.MainController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="criptografia.rsa.MainController">
   <children>
     <Button fx:id="butonGerarCoprimos" layoutX="36.0" layoutY="147.0" mnemonicParsing="false" onAction="#GerarCoPrimosAction" text="Gerar lista de co-primos" />
     <Label layoutX="24.0" layoutY="85.0" text="Digite o primeiro número:" />
     <Label layoutX="24.0" layoutY="115.0" text="Digite o segundo número:" />
     <TextField fx:id="textFieldNum1" layoutX="201.0" layoutY="82.0" prefWidth="28.0" />
     <TextField fx:id="textFieldNum2" layoutX="201.0" layoutY="115.0" prefHeight="23.0" prefWidth="28.0" />
-    <Label layoutX="222.0" layoutY="23.0" prefHeight="41.0" prefWidth="118.0" text="Criptografia RSA" />
-    <Label layoutX="340.0" layoutY="74.0" text="Lista de co-primos" />
-    <ComboBox fx:id="listaCoPrimos" layoutX="446.0" layoutY="101.0">
+    <Label layoutX="227.0" layoutY="17.0" prefHeight="41.0" prefWidth="118.0" text="Criptografia RSA" />
+    <Label layoutX="373.0" layoutY="56.0" text="Lista de co-primos" />
+    <ComboBox fx:id="listaCoPrimos" layoutX="447.0" layoutY="89.0">
       <items>
         <FXCollections fx:factory="observableArrayList">
           <String fx:value="Item 1" />
@@ -25,14 +27,47 @@
         </FXCollections>
       </items>
     </ComboBox>
-    <Label layoutX="300.0" layoutY="104.0" text="Escolha um numero: " />
-    <Label layoutX="300.0" layoutY="160.0" prefWidth="168.0" text="Escolha um valor para k" />
-    <Label layoutX="300.0" layoutY="142.0" prefWidth="89.0" text="Valores de e" />
-    <TextField layoutX="468.0" layoutY="154.0" prefWidth="57.0" />
-    <Button layoutX="534.0" layoutY="155.0" mnemonicParsing="false" text="Ok" />
+    <Label layoutX="300.0" layoutY="94.0" text="Escolha um numero: " />
+    <Label layoutX="300.0" layoutY="200.0" prefWidth="168.0" text="Escolha um valor para k" />
+    <TextField fx:id="textFielValorK" layoutX="457.0" layoutY="195.0" prefWidth="57.0" />
+    <Button fx:id="buttonOkValorK" layoutX="528.0" layoutY="195.0" mnemonicParsing="false" onAction="#onBtValorKAction" text="Ok" />
     <Label layoutX="36.0" layoutY="224.0" text="Chave Publica: " />
     <Label layoutX="36.0" layoutY="250.0" text="Chave Privada: " />
-    <Label layoutX="139.0" layoutY="224.0" text="(d, n)" />
-    <Label layoutX="137.0" layoutY="250.0" text="(e, n)" />
+    <Label fx:id="labelChavePublica" layoutX="137.0" layoutY="224.0" text="(d, z)" />
+    <Label fx:id="labelChavePrivada" layoutX="137.0" layoutY="250.0" text="(e, z)" />
+      <Label layoutX="24.0" layoutY="55.0" text="Passo 1">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="300.0" layoutY="55.0" text="Passo 2">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="300.0" layoutY="134.0" text="Passo 3">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelInversoModular" layoutX="300.0" layoutY="156.0" text="Valores de e" />
+      <Label layoutX="34.0" layoutY="200.0" text="Chaves de Criptografia">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label text="Label" />
+      <Label layoutX="34.0" layoutY="296.0" text="Passo 4">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="98.0" layoutY="297.0" text="Digite uma palavra" />
+      <TextField fx:id="TextFieldPalavra" layoutX="38.0" layoutY="322.0" promptText="Digite uma palavra..." />
+      <Button fx:id="buttonSelecionarPalavra" layoutX="214.0" layoutY="322.0" mnemonicParsing="false" onAction="#onBtSelecionarPalavra" text="Ok" />
+      <Label layoutX="296.0" layoutY="313.0" text="Recebido:" />
+      <Label fx:id="labelRecebido" layoutX="364.0" layoutY="313.0" text="Label" />
+      <Label layoutX="297.0" layoutY="336.0" text="Decodificaçao:" />
+      <Label fx:id="labelDescriptografado" layoutX="392.0" layoutY="336.0" text="Label" />
   </children>
 </AnchorPane>
