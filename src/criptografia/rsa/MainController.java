@@ -5,6 +5,7 @@
  */
 package criptografia.rsa;
 
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -21,7 +22,7 @@ import javafx.scene.control.TextField;
 
 /**
  *
- * @author italomcdp
+ * @author Hiarly Fernandes de Souto
  */
 public class MainController implements Initializable{
     
@@ -141,7 +142,6 @@ public class MainController implements Initializable{
 		System.out.println(d);
 		System.out.println(valE);
 		labelChavePublica.setText("(" + valE + ", " + z + ")");
-		System.out.println(criptografando("teste"));
 	}
     
 	private ArrayList<Integer> codigoPalavra(String palavra) {
@@ -153,30 +153,29 @@ public class MainController implements Initializable{
 		return lista;
 	}
 	
-	private ArrayList<Integer> criptografando(String palavra) {
+	private ArrayList<BigDecimal> criptografando(String palavra) {
 		ArrayList<Integer> valores = codigoPalavra(palavra);
-		ArrayList<Integer> lista = new ArrayList<Integer>();
+		ArrayList<BigDecimal> lista = new ArrayList<BigDecimal>();
 		for (int num : valores) {
-			double valor = Math.pow(num, d);
-			int codigo =  (int) (valor % z);
+			BigDecimal numBigDecimal = new BigDecimal(num);
+			BigDecimal valor = numBigDecimal.pow(d);
+			BigDecimal valorZ = new BigDecimal(z);
+			BigDecimal codigo = valor.remainder(valorZ);
 			lista.add(codigo);
 		}
-		System.out.println(lista);
 		return lista;
 	}
 	
-	private String descriptografando(ArrayList<Integer> valores) {
+	private String descriptografando(ArrayList<BigDecimal> valores) {
 		String palavra = "";
-		for (int num : valores) {
-			Long valor = (long) valE;
-			System.out.println(valE);
-			for (int i = 1; i <= z; i++) {
-				valor = valor*valE;
-			}
-			System.out.println(valor);
-			int codigo =  (int) (valor % z);
-			System.out.println(codigo);
-			palavra += (char) (codigo + 96);
+		for (BigDecimal num : valores) {
+			BigDecimal valor = new BigDecimal(0);
+			valor = num.pow(e);
+			BigDecimal valorZ = new BigDecimal(z);
+			BigDecimal codigo = valor.remainder(valorZ);
+			
+			BigDecimal somaBigDecimal = new BigDecimal(96);
+			palavra += (char) codigo.add(somaBigDecimal).intValue();
 		}
 		return palavra;
 	}
@@ -184,11 +183,11 @@ public class MainController implements Initializable{
 	@FXML
 	public void onBtSelecionarPalavra(ActionEvent event) {
 		String palavraString = TextFieldPalavra.getText();
-		ArrayList<Integer> valoresCrptografados = criptografando(palavraString);
+		ArrayList<BigDecimal> valoresCrptografados = criptografando(palavraString);
 		String palavraDescriptografa = descriptografando(valoresCrptografados);
 		
 		String valoresCripString = "";
-		for (int num : valoresCrptografados) {
+		for (BigDecimal num : valoresCrptografados) {
 			valoresCripString += num + " ";
 		}
 		
